@@ -63,32 +63,44 @@ let total = 0
 //}
 //
 function menuCompra(){ 
+    let lista = " ";
     let option = prompt("Elija una opción\n 1. Iniciar compra \n 2. Terminar Compra" );
     if (option == 1 ) {
         productos.forEach((producto) => {
-        lista += `${producto.id} ${producto.nombre} \n`
+        lista +=  `${producto.id} ${producto.nombre} \n`
         })
-        alert(lista)
+        alert(lista) 
     } else{
         alert("Gracias por visitarnos");
     }
 } 
 menuCompra()
-
-//let lista = " ";
+const carrito = [] 
+let productoElegido = 0
+function agregarCarrito (){
+    let eleccion = prompt ("Ingrese el numero de Id del producto que desea comprar")
+    productoElegido = productos.find ((producto)=> producto.id === eleccion)
+    if (productoElegido) {
+        carrito.push (productoElegido)
+        alert (carrito)
+    }else{
+        alert ( "Ingrese un Id válido por favor")
+    }
+}
+agregarCarrito()
 //function buscarProducto (id){
 //    return productos.find((producto)=> producto.id == id );
 //}
 //function seleeccionLista (producto){
-//    let seleccion = buscarproducto(producto);
-//    if (seleccion){
+//    let seleccion = prompt("Coloque el Id del producto que desea comprar") 
+//    if (seleccion) {
 //        carrito.push (seleccion)
 //    } else{
 //
 //    }   
 //}
 //const carrito = []
-//
+
 
 
 
