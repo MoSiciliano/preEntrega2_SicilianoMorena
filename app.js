@@ -57,57 +57,51 @@ const seccionHabitación =[
 //Array con todos los  productos
 const productos = seccionLiving.concat(seccionHabitación);
 
-let total = 0
-//function iD (id){
-    //productos.find (()=>)  
-//}
-//
-function menuCompra(){ 
-    let lista = " ";
-    let option = prompt("Elija una opción\n 1. Iniciar compra \n 2. Terminar Compra" );
-    if (option == 1 ) {
+let elegirOtro = 1;
+let eleccion; 
+const carrito =[]
+while (elegirOtro === 1){
+    //Menu de compra 
+
+    function menuCompra(){ 
+        let lista = " ";
         productos.forEach((producto) => {
         lista +=  `${producto.id} ${producto.nombre} \n`
         })
-        alert(lista) 
-    } else{
-        alert("Gracias por visitarnos");
+        eleccion = Number(prompt(`${lista} \n Elegi tu producto por id`))
+    } 
+    menuCompra()
+    // Array de carrito vacio 
+    //const carrito = [] 
+    let productoElegido = 0
+    //agregar al carrito
+    function agregarCarrito (){
+        productoElegido = productos.find ((producto)=> producto.id === eleccion)
+          if (productoElegido) {
+              carrito.push (productoElegido)
+          }else{
+              do {
+                alert ( "Ingrese un Id válido por favor")
+                eleccion = Number(prompt(`${lista} \n Elegi tu producto por id`))
+            } while (productoElegido)
+          } elegirOtro = Number(prompt("Desea agregar Otro?\n 1.si\n 2.no"))
     }
-} 
-menuCompra()
-const carrito = [] 
-let productoElegido = 0
-function agregarCarrito (){
-    let eleccion = prompt ("Ingrese el numero de Id del producto que desea comprar")
-    productoElegido = productos.find ((producto)=> producto.id === eleccion)
-    if (productoElegido) {
-        carrito.push (productoElegido)
-        alert (carrito)
-    }else{
-        alert ( "Ingrese un Id válido por favor")
-    }
+    
+    agregarCarrito()
 }
-agregarCarrito()
-//function buscarProducto (id){
-//    return productos.find((producto)=> producto.id == id );
-//}
-//function seleeccionLista (producto){
-//    let seleccion = prompt("Coloque el Id del producto que desea comprar") 
-//    if (seleccion) {
-//        carrito.push (seleccion)
-//    } else{
-//
-//    }   
-//}
-//const carrito = []
 
-
-
-
-
-//para la suma final del carrito
-//function suma (precio){return total += precio;}
-
-
-
-                                         
+const nombreProducElegido = []
+function listaNombre (){
+let listanombreProducElegido = "";
+    carrito.forEach ((producto)=>{
+        listanombreProducElegido += `ID:${producto.id} Nombre:${producto.nombre}\n`
+    })    
+    if (listanombreProducElegido != ""){
+        nombreProducElegido.push (listanombreProducElegido)
+        alert(nombreProducElegido)
+    } else{ 
+        alert 
+    }
+}             
+    
+listaNombre ()
